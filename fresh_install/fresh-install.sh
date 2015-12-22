@@ -14,8 +14,6 @@ Color_Off='\e[0m'       # Text Reset
 
 # Add Repositories
 echo -e "${BWhite}Adding repositories...${Color_Off}"
-sudo apt-add-repository ppa:paolorotolo/android-studio 
-sudo add-apt-repository ppa:mpstark/elementary-tweaks-daily
 sudo add-apt-repository ppa:linrunner/tlp
 
 # Get latest updates
@@ -24,32 +22,14 @@ sudo apt-get update
 
 # Install applications
 echo -e "${BWhite}Installing applications...${Color_Off}"
-sudo apt-get install android-studio
-sudo apt-get install elementary-tweaks
-sudo apt-get install firefox
 sudo apt-get install openjdk-7-jdk
 sudo apt-get install bison g++-multilib git gperf libxml2-utils make python-networkx zlib1g-dev:i386 zip gcc-multilib g++ g++-4.8-multilib
 sudo apt-get install android-tools-adb android-tools-fastboot
 sudo apt-get install conky
 sudo apt-get install -y tlp tlp-rdw tp-smapi-dkms acpi-call-tools
-sudo apt-get install gimp
 
 echo -e "${BWhite}Starting applications...${Color_Off}"
 sudo tlp start
-
-# Themes
-echo -e "${BWhite}Installating themes...${Color_Off}"
-cd ~/
-mkdir Themes
-cd Themes
-git clone https://github.com/snwh/paper-icon-theme.git
-cd paper-icon-theme
-./install-icon-theme.sh
-
-#cd ~/Themes
-git clone https://github.com/snwh/paper-gtk-theme.git
-cd paper-gtk-theme
-./install.sh
 
 # System settings
 echo -e "${BWhite}Modifying system settings...${Color_Off}"
@@ -59,20 +39,6 @@ echo -e "echo \"256\" > /sys/block/sda/queue/read_ahead_kb${Color_Off}"
 read -p "Copy the settings and then press [Enter]..."
 sudo nano /etc/rc.local
 
-echo -e "${Red}discard,noatime${Color_Off}"
-read -p "Copy the settings and then press [Enter]..."
-sudo nano /etc/fstab
-
-echo -e "${BWhite}Fix the brightness...${Color_Off}"
-echo -e "${Red}Section \"Device\""
-echo "      Identifier  \"card0\""
-echo "      Driver      \"intel\""
-echo "      Option      \"Backlight\"  \"intel_backlight\""
-echo "      BusID       \"PCI:0:2:0\""
-echo -e "EndSection${Color_Off}"
-read -p "Copy the settings and then press [Enter]..."
-sudo nano /usr/share/X11/xorg.conf.d/20-intel.conf
-
 echo -e "${BWhite}Upgrading...${Color_Off}"
 sudo apt-get upgrade
 
@@ -80,5 +46,5 @@ echo -e "${BWhite}Autoremoving items...${Color_Off}"
 sudo apt-get autoremove
 
 echo -e "${BWhite}Setup git...${Color_Off}"
-git config --global user.email "djvoleur@gmail.com"
-git config --global user.name "W.D"
+git config --global user.email "mtb3000gt@gmail.com"
+git config --global user.name "Tony Malagisi"
